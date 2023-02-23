@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /my-js-parcel/",
     "watch": "parcel src/index.html --open --port 3000"
   },
   "repository": {
