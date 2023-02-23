@@ -20,6 +20,14 @@
   },
   "homepage": "https://github.com/YuriyPilipenkoKH/my-js-parcel#readme",
   "devDependencies": {
-    "parcel": "^2.8.3"
+    "@parcel/transformer-sass": "^2.6.0",
+    "parcel": "^2.8.3",
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "posthtml-include": "^1.7.4"
+  },
+  "dependencies": {
+    "throttle-debounce": "^5.0.0",
+    "modern-normalize": "^1.1.0",
+    "simplelightbox": "^2.10.3"
   }
 }
