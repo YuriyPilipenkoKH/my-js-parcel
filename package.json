@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/YuriyPilipenkoKH/my-js-parcel/issues"
   },
-  "homepage": "https://github.com/YuriyPilipenkoKH/my-js-parcel#readme",
+  "homepage": "https://github.com/YuriyPilipenkoKH/my-js-parcel",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
     "parcel": "^2.8.3",
