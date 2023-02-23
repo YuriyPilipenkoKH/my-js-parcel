@@ -1,0 +1,23 @@
+{
+  "name": "my-js-parcel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuriyPilipenkoKH/my-js-parcel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YuriyPilipenkoKH/my-js-parcel/issues"
+  },
+  "homepage": "https://github.com/YuriyPilipenkoKH/my-js-parcel#readme",
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  }
+}
