@@ -38,7 +38,7 @@
 100C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\caniuse-lite\data\features\css-backdrop-filter.js133216072160979797 0
 92C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@nodelib\fs.scandir\out\providers\sync.js133216098771210828 0
 82C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\lmdb\dependencies\lz4\lib\lz4.c133216072127189130 0
-42C:\GitHub\Home-Work\Temp\my-js-parcel\dist133216146216806599 1
+42C:\GitHub\Home-Work\Temp\my-js-parcel\dist133216147621174332 1
 82C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\caniuse-lite\data\regions\FI.js133216072186886817 0
 89C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\terser\node_modules\commander\index.js133216072074529234 0
 87C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\caniuse-lite\data\features\webgl2.js133216072211888546 0
@@ -159,7 +159,7 @@
 69C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\.package-lock.json133216098788910709 0
 69C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\acorn\CHANGELOG.md133216072102283359 0
 65C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\yaml\README.md133216072140311623 0
-56C:\GitHub\Home-Work\Temp\my-js-parcel\src\css\styles.css133216146230630225 0
+56C:\GitHub\Home-Work\Temp\my-js-parcel\src\css\styles.css133216147618197209 0
 105C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\lmdb\node_modules\node-addon-api\tools\clang-format.js133216072111258230 0
 85C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\node-addon-api\tools\check-napi.js133216072108859617 0
 78C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@parcel\watcher\src\Glob.hh133216072121622310 0
@@ -811,7 +811,7 @@
 109C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\.pnpm133216072117794484 1
 100C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@parcel\hash\parcel-hash.linux-arm-gnueabihf.node133216072119313623 0
 69C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\yaml\dist\index.js133216072101873605 0
-67C:\GitHub\Home-Work\Temp\my-js-parcel\dist\my-js-parcel.3464ddca.js133216142511320775 0
+67C:\GitHub\Home-Work\Temp\my-js-parcel\dist\my-js-parcel.3464ddca.js133216147620694611 0
 76C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\terser\dist\bundle.min.js133216072119383606 0
 90C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\caniuse-lite\data\features\webcodecs.js133216072211788602 0
 88C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@parcel\runtime-js\src\helpers\worker133216072133565479 1
@@ -1147,7 +1147,7 @@
 64C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\tslib\modules133216072087621745 1
 93C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\entities\lib\generated\decode-data-html.js133216072084513688 0
 71C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\tslib\tslib.es6.html133216072071151166 0
-64C:\GitHub\Home-Work\Temp\my-js-parcel\dist\index.de5c0784.js.map133216142511520693 0
+64C:\GitHub\Home-Work\Temp\my-js-parcel\dist\index.de5c0784.js.map133216147620784570 0
 97C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\dom-serializer\node_modules\entities\readme.md133216072112737386 0
 69C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\tslib\tslib.es6.js133216072081555250 0
 104C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@parcel\transformer-postcss\src\PostCSSTransformer.js133216072102043506 0
@@ -3597,7 +3597,7 @@
 99C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\caniuse-lite\data\features\keyboardevent-code.js133216072193953358 0
 111C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\caniuse-lite\data\features\keyboardevent-getmodifierstate.js133216072193973350 0
 103C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\caniuse-lite\data\features\keyboardevent-location.js133216072194113271 0
-53C:\GitHub\Home-Work\Temp\my-js-parcel\dist\index.html133216142511310880 0
+53C:\GitHub\Home-Work\Temp\my-js-parcel\dist\index.html133216147621154355 0
 94C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\caniuse-lite\data\features\link-icon-png.js133216072194882835 0
 90C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\caniuse-lite\data\features\shadowdom.js133216072206901394 0
 74C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@parcel\transformer-svg133216072102063524 1
@@ -4608,7 +4608,7 @@
 91C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@nodelib\fs.stat\out\providers\sync.d.ts133216098772789925 0
 89C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@nodelib\fs.stat\out\providers\sync.js133216098770231383 0
 88C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@nodelib\fs.stat\out\adapters\fs.d.ts133216098771610628 0
-55C:\GitHub\Home-Work\Temp\my-js-parcel\dist\src\Module—8133216142511360749 1
+55C:\GitHub\Home-Work\Temp\my-js-parcel\dist\src\Module—8133216147621084387 1
 78C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@nodelib\fs.scandir\LICENSE133216098765464103 0
 74C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@nodelib\fs.scandir\out133216098774219113 1
 80C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\@nodelib\fs.scandir\README.md133216098771750515 0
@@ -4776,12 +4776,12 @@
 62C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\.bin\terser133216072220263754 0
 66C:\GitHub\Home-Work\Temp\my-js-parcel\node_modules\.bin\terser.ps1133216072220263754 0
 64C:\GitHub\Home-Work\Temp\my-js-parcel\dist\index.579125c3.js.map133216094570018918 0
-61C:\GitHub\Home-Work\Temp\my-js-parcel\dist\index.77a9bc14.css133216146216486792 0
-65C:\GitHub\Home-Work\Temp\my-js-parcel\dist\index.77a9bc14.css.map133216146216776621 0
-60C:\GitHub\Home-Work\Temp\my-js-parcel\dist\index.de5c0784.js133216142511320775 0
-63C:\GitHub\Home-Work\Temp\my-js-parcel\dist\Module—8.d9dd2d64.js133216142511320775 0
-67C:\GitHub\Home-Work\Temp\my-js-parcel\dist\Module—8.d9dd2d64.js.map133216142511520693 0
-71C:\GitHub\Home-Work\Temp\my-js-parcel\dist\my-js-parcel.3464ddca.js.map133216142511520693 0
+61C:\GitHub\Home-Work\Temp\my-js-parcel\dist\index.77a9bc14.css133216147620194895 0
+65C:\GitHub\Home-Work\Temp\my-js-parcel\dist\index.77a9bc14.css.map133216147620294872 0
+60C:\GitHub\Home-Work\Temp\my-js-parcel\dist\index.de5c0784.js133216147620654624 0
+63C:\GitHub\Home-Work\Temp\my-js-parcel\dist\Module—8.d9dd2d64.js133216147620654624 0
+67C:\GitHub\Home-Work\Temp\my-js-parcel\dist\Module—8.d9dd2d64.js.map133216147620784570 0
+71C:\GitHub\Home-Work\Temp\my-js-parcel\dist\my-js-parcel.3464ddca.js.map133216147620784570 0
 67C:\GitHub\Home-Work\Temp\my-js-parcel\dist\my-js-parcel.59712999.js133216094569699014 0
 46C:\GitHub\Home-Work\Temp\my-js-parcel\dist\src133216123222799482 1
-66C:\GitHub\Home-Work\Temp\my-js-parcel\dist\src\Module—8\index.html133216142511310880 0
+66C:\GitHub\Home-Work\Temp\my-js-parcel\dist\src\Module—8\index.html133216147621064399 0

@@ -23,7 +23,7 @@
     
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 20px;
     align-items: center;
 
 }
@@ -37,7 +37,7 @@ h3 {
 }
 
 
-ul, li, img  {
+h1,h2,h3,ul, li, img  {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -72,9 +72,15 @@ ul, li, img  {
     display: block;
     max-width: 100%;
   }
+ .npm {
+    fill: #757575;
+    transition: all 0.5s;
+ }
 
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+ .npm:hover,
+ .npm:focus {
+    outline: none;
+    fill: crimson;
+    transition: all 0.5s;
+    cursor: pointer;
+ }
