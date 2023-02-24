@@ -1,3 +1,5 @@
+import throttle from 'lodash.throttle';
+
 const refs = {
     form: document.querySelector('form.feedback-form'),
     textarea: document.querySelector('form [name="message"]'),
@@ -5,52 +7,46 @@ const refs = {
 }
 
 
-const EMAIL_KEY = 'feedback-email'
-const MESSAGE_KEY = 'feedback-msg'
+const STORAGE_KEY = 'feedback-form-state';
+const formData = {};
 
-console.log(localStorage);
 
 refs.form.addEventListener('submit', onFormSubmit)
-refs.email.addEventListener('input', onMailInput)
-refs.textarea.addEventListener('input', onTextInput)
+refs.form.addEventListener('input', throttle(onTextInput, 500))
 
-populateTextarea()
+
+formFill()
 
 function onFormSubmit(e) {
     e.preventDefault()
-     
-    e.currentTarget.reset()
-    localStorage.removeItem(EMAIL_KEY)
-    localStorage.removeItem(MESSAGE_KEY)
-} 
 
-function onMailInput(e) {
-    const message = e.currentTarget.value
-    localStorage.setItem(EMAIL_KEY,message)
-
-    console.log(message);
-}
-
-function onTextInput(e) {
-    const message = e.currentTarget.value
-    localStorage.setItem(MESSAGE_KEY,message)
-
-    console.log(message);
-}
-
-function populateTextarea(e) {
-    const saveMessage = localStorage.getItem(MESSAGE_KEY)
-    if(saveMessage) {
-        console.log(saveMessage);
-
-        refs.textarea.value = saveMessage
+    const mail = refs.email.value
+    const text = refs.textarea.value
+    if(!mail  || !text) {
+        alert('Type some text');
     }
 
-    const saveEmail = localStorage.getItem(EMAIL_KEY)
-    if(saveEmail) {
-        console.log(saveEmail);
+    e.currentTarget.reset()
+    localStorage.removeItem(STORAGE_KEY)
+   console.log(formData);
+} 
 
-        refs.email.value = saveEmail
+function onTextInput(e) {
+    formData[e.target.name] = e.target.value;
+    const inputData = JSON.stringify(formData);
+  
+    localStorage.setItem(STORAGE_KEY, inputData);
+
+}
+
+function formFill(e) {
+    const saveMessage = localStorage.getItem(STORAGE_KEY)
+    if(saveMessage) {
+
+        const result = JSON.parse(saveMessage)
+
+        refs.email.value = result.email
+        refs.textarea.value = result.message
     }
 
 }

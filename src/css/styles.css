@@ -132,3 +132,10 @@ h1,h2,h3,ul, li, img  {
     line-height: 0.7;
     color: #22fd12;
    }
+
+   .wp {
+      fill: #27303d;
+   }
+   .wp__wrap{
+      border-radius: 10px;
+   }
