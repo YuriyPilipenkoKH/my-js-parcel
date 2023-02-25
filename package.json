@@ -27,6 +27,7 @@
     "posthtml-include": "^1.7.4"
   },
   "dependencies": {
+    "@vimeo/player": "^2.18.0",
     "joi": "^17.8.3",
     "lodash.throttle": "^4.1.1",
     "modern-normalize": "^1.1.0",
