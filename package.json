@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "@vimeo/player": "^2.18.0",
+    "colo": "^1.0.0",
+    "colors": "^1.4.0",
     "joi": "^17.8.3",
     "lodash.throttle": "^4.1.1",
     "modern-normalize": "^1.1.0",
