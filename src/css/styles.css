@@ -50,6 +50,20 @@ h1,h2,h3,ul, li, img  {
     border-radius:20px;
     
    }
+
+   .main__link {
+      text-decoration: none;
+      color: #757575;
+      font-weight: 600;
+      transition: all 0.5s;
+   }
+   .main__link:hover,
+   .main__link:focus {
+      outline: none;
+      color: #22fd12;
+      transition: all 0.5s;
+   }
+
    #ref {
     color: #757575;
     font-weight: 600;
