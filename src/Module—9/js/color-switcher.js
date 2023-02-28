@@ -4,8 +4,10 @@ const refs = {
     stop: document.querySelector('[data-stop]')
 };
 
+refs.stop.setAttribute("disabled", "")
+
 refs.start.addEventListener('click', () => {
-    // setBodyColor(getRandomHexColor())
+    
     bodyColorSetter.start()
 })
 
@@ -23,6 +25,7 @@ const bodyColorSetter = {
         }
         this.inProcess = true
         refs.start.setAttribute("disabled", "")
+        refs.stop.removeAttribute("disabled", "")
 
         this.intervalId = setInterval(() => {
         setBodyColor(getRandomHexColor())
@@ -34,6 +37,7 @@ const bodyColorSetter = {
         clearInterval(this.intervalId)
         this.inProcess = false
         refs.start.removeAttribute("disabled", "")
+        refs.stop.setAttribute("disabled", "")
 },
 
 }
