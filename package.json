@@ -33,6 +33,7 @@
     "bootstrap.native": "^3.0.15",
     "colo": "^1.0.0",
     "colors": "^1.4.0",
+    "flatpickr": "^4.6.13",
     "joi": "^17.8.3",
     "lodash.throttle": "^4.1.1",
     "modern-normalize": "^1.1.0",
