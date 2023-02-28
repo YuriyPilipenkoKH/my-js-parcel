@@ -22,19 +22,21 @@ const bodyColorSetter = {
             return
         }
         this.inProcess = true
+        refs.start.setAttribute("disabled", "")
+
         this.intervalId = setInterval(() => {
         setBodyColor(getRandomHexColor())
+
         }, 1000);
     },
 
     stop() {
         clearInterval(this.intervalId)
         this.inProcess = false
+        refs.start.removeAttribute("disabled", "")
 },
 
 }
-
-
 
 function setBodyColor(color) {
     document.body.style.backgroundColor = color;
@@ -44,4 +46,3 @@ function setBodyColor(color) {
 function getRandomHexColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   }
-//   console.log(getRandomHexColor());
