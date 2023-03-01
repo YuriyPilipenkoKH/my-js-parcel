@@ -15,9 +15,9 @@ const user = {
 
   
   // write JSON string to a file
-//   fs.writeFile('user.json', data, err => {
-//     if (err) {
-//       throw err
-//     }
-//     console.log('JSON data is saved.')
-//   })
+  // fs.writeFile('user.json', data, err => {
+  //   if (err) {
+  //     throw err
+  //   }
+  //   console.log('JSON data is saved.')
+  // })

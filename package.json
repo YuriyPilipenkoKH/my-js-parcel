@@ -37,6 +37,7 @@
     "joi": "^17.8.3",
     "lodash.throttle": "^4.1.1",
     "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.6",
     "simplelightbox": "^2.10.3",
     "throttle-debounce": "^5.0.0"
   }

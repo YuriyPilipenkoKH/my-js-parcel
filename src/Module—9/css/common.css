@@ -34,7 +34,45 @@ img {
   cursor: pointer;
 }
 
-button:disabled {
+button:disabled,
+button[data-start]:disabled {
   color: antiquewhite;
   background-color: #777;
+
+}
+
+button[data-start] {
+  margin-bottom: 20px;
+  padding: 4px 20px;
+  border-radius: 4px;
+  border: transparent;
+
+  background-color: #58BB95;
+
+}
+
+.timer {
+  display: flex;
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+}
+
+.value {
+  width: 60px;
+  text-align: center;
+  background-color: #333333;
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+.label {
+  font-size: 16px;
+  color: #636363;
 }
