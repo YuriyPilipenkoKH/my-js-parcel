@@ -24,7 +24,7 @@ img {
 }
 
 .switcher > button {
-  padding: 4px 30px;
+  padding: 4px 20px;
   font-weight: 600;
   font-size: large;
   background-color: #495;
@@ -42,18 +42,23 @@ button[data-start]:disabled {
 }
 
 button[data-start] {
-  margin-bottom: 20px;
+
   padding: 4px 20px;
-  border-radius: 4px;
+  border-radius: 10px;
   border: transparent;
 
-  background-color: #58BB95;
+  background-color: #495;
 
+}
+
+#datetime-picker:disabled {
+  cursor: none;
 }
 
 .timer {
   display: flex;
   gap: 10px;
+  padding: 30px 0;
 }
 
 .field {

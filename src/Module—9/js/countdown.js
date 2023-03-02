@@ -6,31 +6,40 @@ import Notiflix from 'notiflix';
 
 const refs = {
     startBtn: document.querySelector('button[data-start]'),
-    inputRef: document.querySelector('#datetime-picker'),
+    input: document.querySelector('#datetime-picker'),
     daysLabel: document.querySelector('span[data-days]'),
     hoursLabel: document.querySelector('span[data-hours]'),
     minutesLabel: document.querySelector('span[data-minutes]'),
     secondsLabel: document.querySelector('span[data-seconds]'),
-  };
+};
+
   
   refs.startBtn.addEventListener('click', onStartClick);
   refs.startBtn.disabled = true;
+  // refs.input.type = 'datetime-local';
+ 
+
   
-  const options = {
+const options = {
+ 
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
     onClose(selectedDates) {
-      console.log(selectedDates[0]);
+  
       const selectedDatesUTC = selectedDates[0].getTime();
       const dateNow = Date.now();
+
+      // console.log(selectedDatesUTC);
+      // console.log(dateNow);
   
       if (selectedDatesUTC <= dateNow) {
         Notiflix.Notify.failure('Please choose a date in the future');
       } else refs.startBtn.disabled = false;
     },
-  };
+};
+  // 
   
   flatpickr('input#datetime-picker', options);
   const fp = document.querySelector('input#datetime-picker')._flatpickr;
@@ -43,12 +52,13 @@ const refs = {
       const timeDelay = convertMs(delay);
       updateClockContent(timeDelay);
 
-      console.log(timeNow);
+    
   
       const { days, hours, minutes, seconds } = timeDelay;
   
-      if (days === 0 && hours === '00' && minutes === '00' && seconds === '00') {
+      if (days === '00' && hours === '00' && minutes === '00' && seconds === '00') {
         clearInterval(timeId);
+        refs.input.disabled = false;
       }
     }, 1000);
   }
@@ -56,6 +66,7 @@ const refs = {
   function onStartClick() {
     timerStart();
     refs.startBtn.disabled = true;
+    refs.input.disabled = true;
   }
   
   function addLeadingZero(value) {
@@ -77,7 +88,7 @@ const refs = {
     const day = hour * 24;
   
     // Remaining days
-    const days = Math.floor(ms / day);
+    const days = addLeadingZero(Math.floor(ms / day));
     // Remaining hours
     const hours = addLeadingZero(Math.floor((ms % day) / hour));
     // Remaining minutes
