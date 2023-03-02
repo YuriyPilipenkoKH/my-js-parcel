@@ -21,6 +21,7 @@ img {
   flex-direction: row;
   gap: 45px;
   justify-content: center;
+  padding: 40px;
 }
 
 .switcher > button {
