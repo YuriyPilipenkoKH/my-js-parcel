@@ -17,8 +17,9 @@ const refs = {
   refs.startBtn.addEventListener('click', onStartClick);
   refs.startBtn.disabled = true;
   // refs.input.type = 'datetime-local';
- 
+  refs.input.setAttribute('type', 'datetime-local')
 
+console.log(refs.input)
   
 const options = {
  
