@@ -82,3 +82,39 @@ button[data-start] {
   font-size: 16px;
   color: #636363;
 }
+
+
+form  {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 20px;
+  }
+  
+  form label input {
+    font-size: 22px;
+    
+  }
+  
+  
+  form label {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+  }
+  
+  form button {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ee2;
+    padding: 10px 90px;
+    border-radius: 19px;
+    border: transparent;
+  
+    background-color: #495;
+    cursor: pointer;
+  }
+  
+  form button:disabled {
+    color: antiquewhite;
+    background-color: #777;
+  }
