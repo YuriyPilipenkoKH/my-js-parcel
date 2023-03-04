@@ -16,10 +16,13 @@ const refs = {
   
   refs.startBtn.addEventListener('click', onStartClick);
   refs.startBtn.disabled = true;
-  // refs.input.type = 'datetime-local';
-  refs.input.setAttribute('type', 'datetime-local')
+
+
+  refs.input.type = 'password';
+  // refs.input.setAttribute('type', 'datetime-local')
 
 console.log(refs.input)
+console.log(refs.input.type)
   
 const options = {
  

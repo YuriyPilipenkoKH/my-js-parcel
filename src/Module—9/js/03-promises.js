@@ -2,11 +2,24 @@ import Notiflix from 'notiflix';
 let timerId = null;
 let formValues = {};
 
-const form = document.querySelector('.form');
-const createBtn = document.querySelector('form > button')
+
+const refs = {
+  form: document.querySelector('.form'),
+  createBtn: document.querySelector('form > button'),
+  inputOne: document.querySelector( '[name="delay"]'),
+  inputTwo: document.querySelector( '[name="step"]'),
+  inputThree: document.querySelector( '[name="amount"]'),
+}
+refs.inputOne.type = 'datetime-local'
+refs.inputTwo.type = 'password'
+// refs.inputTwo.removeAttribute('required')
+
+console.log(refs.inputOne);
+console.log(refs.inputTwo);
+console.log(refs.inputThree);
 
 
-form.addEventListener('submit', onFormSubmit);
+refs.form.addEventListener('submit', onFormSubmit);
 
 function createPromise(position, delay,amount ) {
   return new Promise((resolve, reject) => {
@@ -21,7 +34,7 @@ function createPromise(position, delay,amount ) {
       }
 
       if(position === amount) {
-        createBtn.removeAttribute('disabled', '')
+        refs.createBtn.removeAttribute('disabled', '')
       }
     }, delay);
   });
@@ -29,7 +42,7 @@ function createPromise(position, delay,amount ) {
 
 function onFormSubmit(e) {
   e.preventDefault();
-  createBtn.setAttribute('disabled', '')
+  refs.createBtn.setAttribute('disabled', '')
 
   const formData = new FormData(e.currentTarget);
 
