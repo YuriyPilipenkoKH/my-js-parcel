@@ -5,12 +5,12 @@ import { galleryItems } from './gallery-items';
 
 const gall = document.querySelector('.gallery');
 
-const myMarkup =  galleryItems.map(item => `
-<a class="gallery__item" href="${item.original}" >
-    <img class="gallery__image" src="${item.preview}" data-source="${item.original}" alt="${item.description}">
+const myMarkup =  galleryItems.map(({ preview, original, description })=> `
+<a class="gallery__item" href="${original}" >
+    <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}">
 </a>`).join('');
 
-gall.insertAdjacentHTML('afterbegin', myMarkup);
+gall.insertAdjacentHTML('beforeend', myMarkup);
 
 
 
