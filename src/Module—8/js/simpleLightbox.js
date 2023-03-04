@@ -18,3 +18,14 @@ const lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
 });
+
+const pics = {}
+
+lightbox.on('show.simplelightbox', function (e) {
+	// console.log(e.srcElement.href );
+    // console.log(e.target.firstElementChild.alt );
+    console.log(e);
+    pics.name = e.target.firstElementChild.alt
+});
+
+console.log(pics);
