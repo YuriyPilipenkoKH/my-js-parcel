@@ -24,8 +24,9 @@ const pics = {}
 lightbox.on('show.simplelightbox', function (e) {
 	// console.log(e.srcElement.href );
     // console.log(e.target.firstElementChild.alt );
-    console.log(e);
+    // console.log(e);
     pics.name = e.target.firstElementChild.alt
+ 
 });
 
 console.log(pics);
