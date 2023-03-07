@@ -14,6 +14,7 @@ function onSearch(e) {
 
     const form = e.currentTarget
     const searchQuery = form.elements.query.value
+    console.log(searchQuery);
      
     fetchPokemon(searchQuery)
     .then(renderPokemonCard)
