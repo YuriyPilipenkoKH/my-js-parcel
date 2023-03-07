@@ -16,7 +16,7 @@ const date = new Date()
 //-------------------------
 for (let i = 3; i>0; i--) {
     const element = i*1000;
-    setTimeout(() => console.log(i),element)
+    setTimeout(() => console.log('i:'+i),element)
     
 }
 //-------------------------

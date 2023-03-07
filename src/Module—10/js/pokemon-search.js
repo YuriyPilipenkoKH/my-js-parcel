@@ -10,10 +10,14 @@ refs.searchForm.addEventListener('submit', onSearch)
 
 function onSearch(e) {
     e.preventDefault()
+
+    const form = e.currentTarget
+    const searchQuery = form.elements.query.value
      
-    fetchPokemon(5)
+    fetchPokemon(searchQuery)
     .then(renderPokemonCard)
     .catch(error => console.log(error))
+    .finally(() => form.reset())
 }
 
 function fetchPokemon(pokemonId) {

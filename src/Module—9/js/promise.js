@@ -41,3 +41,12 @@ const makeOrder = dish => {
         
     }, DELAY);
 }
+//=========================================================
+
+const p = new Promise((res,rej) => {
+    res (10)
+    
+} ) .catch(e => console.log(e))
+
+p.then(v => console.log(v))
+
