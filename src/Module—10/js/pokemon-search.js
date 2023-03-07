@@ -1,4 +1,5 @@
 import pokemonCardTpl from '../../templates/pokemon-card.hbs'
+import '../css/common.css'
 
 const refs = {
     cardContainer: document.querySelector('.js-card-container'),

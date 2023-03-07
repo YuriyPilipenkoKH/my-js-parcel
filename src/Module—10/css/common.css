@@ -1,0 +1,5 @@
+.js-search-form  {
+    display: grid;
+    place-items: center;
+    padding: 8px;
+}

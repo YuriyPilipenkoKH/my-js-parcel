@@ -1,0 +1,29 @@
+.js-form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 25px;
+  }
+  
+  .how-many {
+    width: 60px;
+    border: 3px solid #72dad7;
+    border-radius: 11px;
+  
+  }
+  
+  .btn-go {
+    font-family: inherit;
+    padding: 2px 18px;
+    background-color: #2196f3;
+    border: transparent;
+    border-radius: 11px;
+    cursor: pointer;
+    color: aliceblue;
+    font-weight: 700;
+  
+  }
+  
+  .how-many {
+    text-align: center;
+  }

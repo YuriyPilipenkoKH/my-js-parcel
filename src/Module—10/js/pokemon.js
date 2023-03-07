@@ -1,4 +1,5 @@
 import pokemonCardTpl from '../../templates/pokemon-card.hbs'
+import '../css/common.css'
 
 console.log('pokemon');
 
