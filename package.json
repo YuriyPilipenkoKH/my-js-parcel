@@ -10,8 +10,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YuriyPilipenkoKH/my-js-parcel.git",
-    "build": "parcel build *.html --public-url /my-js-parcel/"
+    "url": "git+https://github.com/YuriyPilipenkoKH/my-js-parcel.git"
+   
   },
   "keywords": [],
   "author": "",
