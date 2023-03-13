@@ -9,6 +9,8 @@ import colorInputTpl from '../../templates/color-input.hbs'
 import colors from './colors.json'
 import '../css/handlebars.css'
 
+
+
 // console.log(colors);
 // console.log(colorCardTpl(colors[0]));
 // console.log(colorInputTpl);

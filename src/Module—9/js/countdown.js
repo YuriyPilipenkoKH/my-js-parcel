@@ -18,7 +18,7 @@ const refs = {
   refs.startBtn.disabled = true;
 
 
-  refs.input.type = 'password';
+  // refs.input.type = 'password';
   // refs.input.setAttribute('type', 'datetime-local')
 
 console.log(refs.input)
