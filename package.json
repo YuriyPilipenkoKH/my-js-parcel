@@ -6,7 +6,8 @@
   "scripts": {
     "start": "parcel *.html",
     "build": "parcel build *.html --public-url /my-js-parcel/",
-    "watch": "parcel index.html --open --port 3000"
+    "watch": "parcel index.html --open --port 3000",
+    "server": "json-server --watch ./src/db.json -p 4000 -d 1400"
   },
   "repository": {
     "type": "git",

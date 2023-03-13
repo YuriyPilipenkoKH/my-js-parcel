@@ -1,0 +1,39 @@
+{
+    "books": [
+        {
+            "id": 1,
+            "title": "Last Kingdom",
+            "author": "Cornuel",
+            "genres": ["adventures"],
+            "rating": 8.38
+        },
+        {
+            "id": 2,
+            "title": "At the riverside",
+            "author": "Shekley",
+            "genres": ["fantasy"],
+            "rating": 8.51
+        },
+        {
+            "id": 3,
+            "title": "Ghost eater",
+            "author": "Lawcraft",
+            "genres": ["mystique"],
+            "rating": 7.94
+        },
+        {
+            "id": 4,
+            "title": "Imposter",
+            "author": "Kafka",
+            "genres": ["classics"],
+            "rating": 2.55
+        },
+        {
+            "id": 5,
+            "title": "Two Suns",
+            "author": "Smith",
+            "genres": ["horror"],
+            "rating": 0.55
+        }
+    ]
+}
