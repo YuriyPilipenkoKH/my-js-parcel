@@ -2,7 +2,7 @@
   "name": "my-js-parcel",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js", 
+  "main": "index.js",
   "scripts": {
     "start": "parcel *.html",
     "build": "parcel build *.html --public-url /my-js-parcel/",
@@ -11,7 +11,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/YuriyPilipenkoKH/my-js-parcel.git"
-   
   },
   "keywords": [],
   "author": "",
@@ -22,6 +21,7 @@
   "homepage": "https://github.com/YuriyPilipenkoKH/my-js-parcel",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
+    "json-server": "^0.17.2",
     "parcel": "^2.8.3",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-plugin-nuke-dist": "^1.0.1",
@@ -34,19 +34,19 @@
     "bootstrap.native": "^3.0.15",
     "colo": "^1.0.0",
     "colors": "^1.4.0",
+    "css-loader": "^6.7.3",
     "flatpickr": "^4.6.13",
     "joi": "^17.8.3",
-    "lodash.throttle": "^4.1.1",
     "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
     "modern-normalize": "^1.1.0",
     "nanoid": "^4.0.1",
+    "notiflix": "^3.2.6",
     "prettier": "^2.8.4",
-    "css-loader": "^6.7.3",
     "sass": "^1.58.3",
     "sass-loader": "^13.2.0",
-    "style-loader": "^3.3.1",
-    "notiflix": "^3.2.6",
     "simplelightbox": "^2.12.1",
+    "style-loader": "^3.3.1",
     "throttle-debounce": "^5.0.0"
   }
 }
