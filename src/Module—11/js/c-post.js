@@ -1,4 +1,4 @@
-export { options, newBook }
+export { newBook }
 import  {BASE_URL} from './r-get.js'
 
 
@@ -10,14 +10,20 @@ const newBook  = {
     rating: 10,
 }
 
-const options = {
-    method : 'POST',
-    headers: {
-        'Content-type': 'application/json',
-    },
-    body: JSON.stringify(newBook),
-}
 
-fetch(`${BASE_URL}/books`, options)
-    .then(res => res.json())
-    .then(console.log)
+
+
+    function addBook(book) {
+        const options = {
+            method : 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(book),
+        }
+
+        return fetch(`${BASE_URL}/books`, options)
+        .then(res => res.json())
+        .then(console.log) 
+        .catch(error => console.log(error));
+    } 
