@@ -1,12 +1,12 @@
-export { updateBookById}
+
 import  {BASE_URL} from './r-get.js'
 
 // console.log('BASE_URL');
 
 
 
-function updateBookById(update, bookId) {
-    options = {
+export function updateBookById(update, bookId) {
+  const  options = {
         method: 'PATCH',
         headers: {
             'Content-type': 'application/json',
@@ -15,7 +15,9 @@ function updateBookById(update, bookId) {
     }
     return fetch(`${BASE_URL}/books/${bookId }`, options )
             .then(res => res.json())
-
+            .then(console.log)
+            .catch(error => console.log(error));
 }
 
 // updateBookById({title: 'Big CSS'}, 18)
+// updateBookById({rating: 1, author: 'Mango'}, 21)

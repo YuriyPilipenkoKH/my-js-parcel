@@ -1,8 +1,6 @@
 export { newBook }
 import  {BASE_URL} from './r-get.js'
 
-
-
 const newBook  = {
     title: 'test CSS',
     author: 'Me',

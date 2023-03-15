@@ -3,8 +3,8 @@
 import {BASE_URL, fetchBooks, fetchBookByID} from './r-get.js'
 // import './r-get.js'
 
-// import { options } from './c-post.js';
-import { options } from './c-patch.js';
+import { options } from './c-post.js';
+import { updateBookById} from './u-patch.js';
 
 // console.log(fetchBooks);
 // console.log(fetchBookByID);
