@@ -11,7 +11,12 @@ const newBook  = {
 }
 
 
-
+const newBook1  = {
+    title: 'test HTML',
+    author: 'Me',
+    genres: ['HTML'],
+    rating: 10.8,
+}
 
     function addBook(book) {
         const options = {
@@ -27,3 +32,6 @@ const newBook  = {
         .then(console.log) 
         .catch(error => console.log(error));
     } 
+
+    // addBook(newBook)
+    // addBook(newBook1)
