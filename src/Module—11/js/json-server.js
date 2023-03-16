@@ -5,6 +5,7 @@ import {BASE_URL, fetchBooks, fetchBookByID} from './r-get.js'
 
 import { options } from './c-post.js';
 import { updateBookById} from './u-patch.js';
+import { deleteBook} from './d-delete';
 
 // console.log(fetchBooks);
 // console.log(fetchBookByID);
