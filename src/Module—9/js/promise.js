@@ -50,3 +50,5 @@ const p = new Promise((res,rej) => {
 
 p.then(v => console.log(v))
 
+console.log(p);
+
