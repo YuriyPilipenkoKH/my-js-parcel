@@ -10,8 +10,8 @@ const refs = {
   inputTwo: document.querySelector( '[name="step"]'),
   inputThree: document.querySelector( '[name="amount"]'),
 }
-refs.inputOne.type = 'datetime-local'
-refs.inputTwo.type = 'password'
+// refs.inputOne.type = 'datetime-local'
+// refs.inputTwo.type = 'password'
 // refs.inputTwo.removeAttribute('required')
 
 console.log(refs.inputOne);
