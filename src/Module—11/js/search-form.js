@@ -1,7 +1,6 @@
 // import './css/styles.css';
-// Описан в документации
 import SimpleLightbox from 'simplelightbox';
-// Дополнительный импорт стилей
+
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { ServiceApi } from './news-api';
 import Notiflix from 'notiflix';
@@ -12,7 +11,32 @@ import Notiflix from 'notiflix';
 
 const { height: cardHeight } = document
   .querySelector(".gallery")
-  .firstElementChild.getBoundingClientRect();
+//   .firstElementChild.getBoundingClientRect();
 
   console.log(cardHeight);
 
+  const refs = {
+    form: document.querySelector('.search-form'),
+    buttonSubmit: document.querySelector('.search-form > button'),
+    button: document.querySelector('.load-more'),
+    galleryList: document.querySelector('.gallery'),
+  }
+
+  let lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
+
+
+ refs.form.addEventListener('submit' , onSearch )
+ refs.buttonSubmit.setAttribute("data-name", "search")
+
+ function onSearch(e) {
+    e.preventDefault()
+    const input = refs.form.elements.searchQuery.value
+
+    console.log(input);
+   
+    // fetchUser(login).then(showProfile)
+    refs.form.reset()
+}
