@@ -33,6 +33,6 @@ const { height: cardHeight } = document
 
     console.log(input);
    
-    fetchCard(input).then(console.log)
+    // fetchCard(input).then(console.log)
     refs.form.reset()
 }
