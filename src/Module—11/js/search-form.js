@@ -26,13 +26,32 @@ const { height: cardHeight } = document
 
 
  refs.form.addEventListener('submit' , onSearch )
+ refs.button.addEventListener('click', onLoadMoreImg);
 
  function onSearch(e) {
-    e.preventDefault()
-    const input = refs.form.elements.searchQuery.value
+    e.preventDefault();
+    clearGallery();
+    refs.button.classList.add('is-hidden');
 
-    console.log(input);
-   
-    // fetchCard(input).then(console.log)
+    const input = refs.form.elements.searchQuery.value.trim()
+
+    if(input === '') {
+    return Notiflix.Notify.failure('Please enter valid name.');
+    }
+    refs.buttonSubmit.disabled = true;
+
+    fetchCard(input)
+    .then(console.log)
+
+    
     refs.form.reset()
 }
+
+
+function onLoadMoreImg() {
+
+}
+
+function clearGallery() {
+    refs.galleryList.innerHTML = '';
+  }
