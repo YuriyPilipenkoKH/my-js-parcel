@@ -18,12 +18,3 @@ export  async function fetchCard(data,page) {
     }
   }
 
-// console.log(fetchCard('cat'))
-
-   //    return  axios.get(`${BASE_URL}/?key=${API_KEY}&q=${data}&image_type=photo&orientation=horizontal&safesearch=true`)
-        // .then(response =>  {
-        //     if(!response.ok) {
-        //         throw Error(response.statusText)
-        //     }
-        //     return response.json()
-        // } )

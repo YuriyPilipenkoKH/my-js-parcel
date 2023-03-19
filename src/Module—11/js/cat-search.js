@@ -3,7 +3,6 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import Notiflix from 'notiflix';
 import {fetchCard} from './fetchCard.js'
 
-// console.log(fetchCard('cat'));
 
 let lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
@@ -36,14 +35,15 @@ function onSearch(e) {
     fetchCard(input)
     .then(({ hits,totalHits }) => {
 
-        console.log('hits',hits);
         if (hits.length === 0) {
             Notiflix.Notify.failure(
               'Sorry, there are no images matching your search query. Please try again.'
             );
           } else {
-            const maxPage = totalHits / hits.length;
+
+        const maxPage = totalHits / hits.length;
         const currentPage = page - 1;
+
         if (maxPage <= currentPage) {
           Notiflix.Notify.failure(
             "We're sorry, but you've reached the end of search results."
@@ -57,10 +57,11 @@ function onSearch(e) {
         return imagesGalleryMarkup(hits);
           }
     })
-
-
-
-  
+    .catch(error => console.log(error))
+    .finally(() => {
+      refs.button.disabled = false;
+      refs.buttonSubmit.disabled = false;
+    });
 
 }
 
