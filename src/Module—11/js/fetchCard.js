@@ -10,6 +10,7 @@ export  async function fetchCard(data,page) {
       ${BASE_URL}/?key=${API_KEY}&q=${data}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=39
       `);
       console.log(response);
+      return response.data
     } catch (error) {
         console.error(error);
         throw Error(response.statusText)
