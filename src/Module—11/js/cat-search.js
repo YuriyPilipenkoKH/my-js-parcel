@@ -2,6 +2,8 @@ import SimpleLightbox from 'simplelightbox';
 import "simplelightbox/dist/simple-lightbox.min.css";
 import Notiflix from 'notiflix';
 import {fetchCard} from './fetchCard.js'
+import { lens } from './markup.js';
+import { doc } from 'prettier';
 
 
 let lightbox = new SimpleLightbox('.gallery a', {
@@ -11,11 +13,17 @@ let lightbox = new SimpleLightbox('.gallery a', {
 
   const refs = {
     form: document.querySelector('.search-form'),
+    inputField: document.querySelector('.search-form > input'),
     buttonSubmit: document.querySelector('.search-form > button'),
     buttonMore: document.querySelector('.load-more'),
     galleryList: document.querySelector('.gallery'),
   };
   let page = 1;
+
+  refs.inputField.classList.add('field')
+  refs.buttonSubmit.classList.add('search-btn')
+  refs.buttonSubmit.innerHTML = lens
+
 
 refs.form.addEventListener('submit', onSearch);
 refs.buttonMore.addEventListener('click', onLoadMoreImg);
@@ -26,6 +34,8 @@ function onSearch(e) {
 
     const input = e.currentTarget.elements.searchQuery.value.trim();
     console.log(input.length);
+    refs.form.reset()
+    refs.inputField.focused = false
 
     if(input === '' || input.length === 1){
     return Notiflix.Notify.failure('Please enter valid name.');
@@ -59,13 +69,15 @@ function onSearch(e) {
     })
     .catch(error => console.log(error))
     .finally(() => {
-      refs.button.disabled = false;
+      refs.buttonMore.disabled = false;
       refs.buttonSubmit.disabled = false;
     });
 
 }
 
-function galleryItem(data) {
+
+
+function renderItem(data) {
     const markup = data
       .map(
         ({
@@ -77,7 +89,8 @@ function galleryItem(data) {
           comments,
           downloads,
         }) => {
-          return `<a class="gallery-item" href="${largeImageURL}">
+          return `
+          <a class="gallery-item" href="${largeImageURL}">
            <div class="photo-card">
             <img src="${webformatURL}" alt="${tags}" loading="lazy" width="320" height="214"/>
             <div class="info"><p class="info-item">
@@ -92,7 +105,8 @@ function galleryItem(data) {
           <p class="info-item">
             <b>Downloads:</b> ${downloads}
           </p>
-       </div></div></a>`;
+       </div></div></a>
+       `;
         }
       )
       .join('');
@@ -104,7 +118,7 @@ function onLoadMoreImg() {
 }
 
 function imagesGalleryMarkup(data) {
-    refs.galleryList.insertAdjacentHTML('beforeend', galleryItem(data));
+    refs.galleryList.insertAdjacentHTML('beforeend', renderItem(data));
     lightbox.refresh();
     const { height: cardHeight } = document
       .querySelector('.gallery')
