@@ -1,4 +1,5 @@
 import SimpleLightbox from 'simplelightbox';
+import "simplelightbox/dist/simple-lightbox.min.css";
 import Notiflix from 'notiflix';
 import {fetchCard} from './fetchCard.js'
 
@@ -29,12 +30,16 @@ function onSearch(e) {
 
     const input = e.currentTarget.elements.searchQuery.value.trim();
 
+    if(input === '' ){
+    return Notiflix.Notify.failure('Please enter valid name.');
+    }
+
     fetchCard(input)
 
 }
 
 function render() {
-    
+
 }
 
 function onLoadMoreImg() {
