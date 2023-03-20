@@ -2,12 +2,11 @@ import SimpleLightbox from 'simplelightbox'
 import "simplelightbox/dist/simple-lightbox.min.css"
 import Notiflix from 'notiflix'
 import { finder } from './fetch-class.js'
-import { lens } from './markup.js'
+import { headerOfClassSearch } from './markup.js'
 import itemTpl from '../../templates/img-card.hbs'
 import './markup'
 // import { addStyle } from './some-styles.js'
 
-console.log(finder);
 
 class ImageManager {
     #markup = headerOfClassSearch;
