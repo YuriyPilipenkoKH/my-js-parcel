@@ -110,9 +110,6 @@ fetchCard(currentQuery, page, perPage)
 
 
 
-// console.log('currentQuery',currentQuery);
-
-
 function renderItem(data) {
     const markup = data
     .map(({
