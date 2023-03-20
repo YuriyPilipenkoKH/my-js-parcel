@@ -77,15 +77,21 @@ outline: none;
     margin: 0;
     border: transparent;
     cursor: pointer;
+
 }
 
 .search-btn:focus {
     outline: none;
 }
 
-.search-btn:focus .search-btn ~.lens {
+.search-btn:disabled .lens {
+    fill: #777;
+    cursor: none;
+}
+.search-btn:focus .lens {
     fill: #ff0;
 }
+
 
 .lens {
     fill: #fff

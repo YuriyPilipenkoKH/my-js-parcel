@@ -4,6 +4,7 @@ import Notiflix from 'notiflix'
 import {fetchCard} from './fetchCard.js'
 import { lens } from './markup.js'
 import itemTpl from '../../templates/img-card.hbs'
+import { addStyle } from './some-styles.js'
 
  export const refs = {
     form: document.querySelector('.search-form'),
@@ -12,7 +13,7 @@ import itemTpl from '../../templates/img-card.hbs'
     buttonMore: document.querySelector('.load-more'),
     galleryList: document.querySelector('.gallery'),
   };
-    let perPage = 10;
+    let perPage = 40;
     let page = 0;
     let currentQuery = ''
     let remained = 0
@@ -20,10 +21,13 @@ import itemTpl from '../../templates/img-card.hbs'
     refs.inputField.classList.add('field')
     refs.buttonSubmit.classList.add('search-btn')
     refs.buttonSubmit.innerHTML = lens
+    addStyle()
+    // refs.buttonSubmit.disabled = true
 
 
     refs.form.addEventListener('submit', onSearch)
     refs.buttonMore.addEventListener('click', onLoadMoreImg)
+    refs.inputField.addEventListener('input', onInputChange)
 
 function onSearch(e) {
     e.preventDefault()
@@ -34,8 +38,6 @@ function onSearch(e) {
     refs.inputField.focused = false
     const input = e.currentTarget.elements.searchQuery.value.trim()
     currentQuery = input
-
- 
 
     if(input === '' || input.length === 1){
     return Notiflix.Notify.failure('Please enter valid name.')
@@ -72,7 +74,7 @@ function onSearch(e) {
     .catch(error => console.log(error))
     .finally(() => {
       refs.buttonMore.disabled = false;
-      refs.buttonSubmit.disabled = false;
+      refs.buttonSubmit.disabled = true;
     //   refs.form.reset()
     });
 
@@ -108,6 +110,9 @@ fetchCard(currentQuery, page, perPage)
 });
 }
 
+function onInputChange(e) {
+    refs.buttonSubmit.disabled = false;
+}
 
 
 function renderItem(data) {
@@ -141,6 +146,8 @@ function createMarkup(data) {
     const { height: cardHeight } = document
       .querySelector('.gallery')
       .firstElementChild.getBoundingClientRect();
+
+    //   console.log('cardHeight',cardHeight);
   
     window.scrollBy({
       top: cardHeight * 2,
