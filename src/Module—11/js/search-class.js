@@ -49,8 +49,8 @@ class ImageManager {
 
       onSearch(e) {
         e.preventDefault();
-        clearGallery()
-        let page = 
+        this.clearGallery()
+        let page = 1
         
         this.#refs.inputField.focused = false
         // this.#refs.buttonSubmit.disabled = true;
@@ -59,6 +59,10 @@ class ImageManager {
         if(currentQuery === '' || currentQuery.length === 1){
           return Notiflix.Notify.failure('Please enter valid name.')
           }
+
+          finder.makeFetch(currentQuery)
+          .then(response => response.json())
+          .catch((error) => console.log(error));
       }
 
       #onLoadMoreImg(e) {}
@@ -94,15 +98,21 @@ class ImageManager {
     
         this.#refs.articles.innerHTML = mockup;
       }
+
+      clearGallery() {
+
+      }
 }
 
 
 const first = new ImageManager()
 first.init()
 
-console.log(first);
+console.log(finder);
 
-
-function clearGallery() {
-
-}
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+  enableKeyboard: true,
+  doubleTapZoom: 5,
+});
