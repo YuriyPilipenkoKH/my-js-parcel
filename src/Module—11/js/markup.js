@@ -1,5 +1,3 @@
-import { fetchCard } from "./fetchCard";
-
 
 export const lens = `
 <div class="lens-wrap">

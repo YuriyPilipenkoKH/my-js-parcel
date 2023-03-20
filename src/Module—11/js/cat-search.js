@@ -4,11 +4,14 @@ import Notiflix from 'notiflix';
 import {fetchCard} from './fetchCard.js'
 import { lens } from './markup.js';
 import { doc } from 'prettier';
+import itemTpl from '../../templates/img-card.hbs'
 
 
 let lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
+    enableKeyboard: true,
+    doubleTapZoom: 5,
   });
 
   const refs = {
@@ -18,23 +21,24 @@ let lightbox = new SimpleLightbox('.gallery a', {
     buttonMore: document.querySelector('.load-more'),
     galleryList: document.querySelector('.gallery'),
   };
-  let page = 1;
+    let page = 1;
+    let currentQuery = ''
 
-  refs.inputField.classList.add('field')
-  refs.buttonSubmit.classList.add('search-btn')
-  refs.buttonSubmit.innerHTML = lens
+    refs.inputField.classList.add('field')
+    refs.buttonSubmit.classList.add('search-btn')
+    refs.buttonSubmit.innerHTML = lens
 
 
-refs.form.addEventListener('submit', onSearch);
-refs.buttonMore.addEventListener('click', onLoadMoreImg);
+    refs.form.addEventListener('submit', onSearch);
+    refs.buttonMore.addEventListener('click', onLoadMoreImg);
 
 function onSearch(e) {
     e.preventDefault()
     clearGallery()
 
     const input = e.currentTarget.elements.searchQuery.value.trim();
-    console.log(input.length);
-    refs.form.reset()
+    currentQuery = input
+
     refs.inputField.focused = false
 
     if(input === '' || input.length === 1){
@@ -75,47 +79,43 @@ function onSearch(e) {
 
 }
 
-
+console.log(currentQuery);
 
 function renderItem(data) {
     const markup = data
-      .map(
-        ({
-          webformatURL,
-          largeImageURL,
-          tags,
-          likes,
-          views,
-          comments,
-          downloads,
-        }) => {
-          return `
-          <a class="gallery-item" href="${largeImageURL}">
-           <div class="photo-card">
-            <img src="${webformatURL}" alt="${tags}" loading="lazy" width="320" height="214"/>
-            <div class="info"><p class="info-item">
-            <b>Likes:</b> ${likes}
-          </p>
-          <p class="info-item">
-            <b>Views:</b> ${views}
-          </p>
-          <p class="info-item">
-            <b>Comments:</b> ${comments}
-          </p>
-          <p class="info-item">
-            <b>Downloads:</b> ${downloads}
-          </p>
-       </div></div></a>
-       `;
-        }
-      )
-      .join('');
+    .map(({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => itemTpl({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      })).join('')
     return markup;
   }
 
-function onLoadMoreImg() {
+
+
+function onLoadMoreImg(e) {
+    page += 1
+    const input = refs.inputField.value.trim();
+    
+    fetchCard(input)
+
 
 }
+
+console.log(page);
+
 
 function imagesGalleryMarkup(data) {
     refs.galleryList.insertAdjacentHTML('beforeend', renderItem(data));
@@ -133,3 +133,6 @@ function imagesGalleryMarkup(data) {
 function clearGallery() {
     refs.galleryList.innerHTML = '';
   }
+
+ 
+ 
