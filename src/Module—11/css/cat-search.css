@@ -44,9 +44,7 @@
     border: 3px solid #fff;
 }
 
-.search-form:focus {
-    border: 3px solid #ff0;
-}
+
 
 .field {
     padding: 4px 16px;
@@ -63,10 +61,15 @@
 outline: none;
 }
 
+.field:focus .search-form{
+  border-color: #ff0;
+}
+
+
 
 .field::placeholder {
     font-size: 20px;
-    color: #fff;
+    color: #aaa;
     font-weight: 500;
 }
 

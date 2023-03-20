@@ -4,7 +4,7 @@ import Notiflix from 'notiflix'
 import { finder } from './fetch-class.js'
 import { headerOfClassSearch } from './markup.js'
 import itemTpl from '../../templates/img-card.hbs'
-import './markup'
+// import './markup'
 // import { addStyle } from './some-styles.js'
 
 
@@ -40,14 +40,26 @@ class ImageManager {
       }
     
       #initListeners() {
-        this.#refs.form.addEventListener('submit', this.#onSearch.bind(this));
+        this.#refs.form.addEventListener('submit', this.onSearch.bind(this));
         this.#refs.buttonMore.addEventListener('click', this.#onLoadMoreImg.bind(this));
         this.#refs.inputField.addEventListener('input', this.#onInputChange.bind(this));
 
       }
+      
 
-
-      #onSearch(e) {}
+      onSearch(e) {
+        e.preventDefault();
+        clearGallery()
+        let page = 
+        
+        this.#refs.inputField.focused = false
+        // this.#refs.buttonSubmit.disabled = true;
+        const currentQuery = e.currentTarget.elements.searchQuery.value
+      
+        if(currentQuery === '' || currentQuery.length === 1){
+          return Notiflix.Notify.failure('Please enter valid name.')
+          }
+      }
 
       #onLoadMoreImg(e) {}
 
@@ -77,8 +89,20 @@ class ImageManager {
         observer.observe(this.#refs.moreBtn);
       }
 
+      #render() {
+        const mockup = this.#articles.map((data) => articleTpl({ ...data })).join('');
+    
+        this.#refs.articles.innerHTML = mockup;
+      }
 }
 
 
 const first = new ImageManager()
 first.init()
+
+console.log(first);
+
+
+function clearGallery() {
+
+}

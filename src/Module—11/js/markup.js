@@ -16,7 +16,7 @@ export const headerOfClassSearch = `
       type="text"
       name="searchQuery"
       autocomplete="off"
-      placeholder="Search images..."
+      placeholder="Search using Classes..."
     />
     <button class="search-btn" type="submit"> ${lens} </button>
   </form>
