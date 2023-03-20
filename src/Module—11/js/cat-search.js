@@ -1,20 +1,11 @@
-import SimpleLightbox from 'simplelightbox';
-import "simplelightbox/dist/simple-lightbox.min.css";
-import Notiflix from 'notiflix';
+import SimpleLightbox from 'simplelightbox'
+import "simplelightbox/dist/simple-lightbox.min.css"
+import Notiflix from 'notiflix'
 import {fetchCard} from './fetchCard.js'
-import { lens } from './markup.js';
-import { doc } from 'prettier';
+import { lens } from './markup.js'
 import itemTpl from '../../templates/img-card.hbs'
 
-
-let lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-    enableKeyboard: true,
-    doubleTapZoom: 5,
-  });
-
-  const refs = {
+ export const refs = {
     form: document.querySelector('.search-form'),
     inputField: document.querySelector('.search-form > input'),
     buttonSubmit: document.querySelector('.search-form > button'),
@@ -29,23 +20,22 @@ let lightbox = new SimpleLightbox('.gallery a', {
     refs.buttonSubmit.innerHTML = lens
 
 
-    refs.form.addEventListener('submit', onSearch);
-    refs.buttonMore.addEventListener('click', onLoadMoreImg);
+    refs.form.addEventListener('submit', onSearch)
+    refs.buttonMore.addEventListener('click', onLoadMoreImg)
 
 function onSearch(e) {
     e.preventDefault()
     clearGallery()
-
-    const input = e.currentTarget.elements.searchQuery.value.trim();
-    currentQuery = input
-
     refs.inputField.focused = false
 
+    const input = e.currentTarget.elements.searchQuery.value.trim()
+    currentQuery = input
+
+
     if(input === '' || input.length === 1){
-    return Notiflix.Notify.failure('Please enter valid name.');
+    return Notiflix.Notify.failure('Please enter valid name.')
     }
    
-
     fetchCard(input)
     .then(({ hits,totalHits }) => {
 
@@ -56,14 +46,14 @@ function onSearch(e) {
           } else {
 
         const maxPage = totalHits / hits.length;
-        const currentPage = page - 1;
+        let currentPage = page - 1;
 
         if (maxPage <= currentPage) {
           Notiflix.Notify.failure(
             "We're sorry, but you've reached the end of search results."
           );
           Notiflix.Notify.info(`Hooray! We found ${totalHits} images.`);
-          return imagesGalleryMarkup(hits);
+          return imagesGalleryMarkup(hits)
         }
         Notiflix.Notify.info(`Hooray! We found ${totalHits} images.`);
         refs.buttonMore.classList.remove('is-hidden');
@@ -79,7 +69,7 @@ function onSearch(e) {
 
 }
 
-console.log(currentQuery);
+// console.log(currentQuery);
 
 function renderItem(data) {
     const markup = data
@@ -102,8 +92,6 @@ function renderItem(data) {
       })).join('')
     return markup;
   }
-
-
 
 function onLoadMoreImg(e) {
     page += 1
@@ -129,6 +117,13 @@ function imagesGalleryMarkup(data) {
       behavior: 'smooth',
     });
   }
+
+  const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+    enableKeyboard: true,
+    doubleTapZoom: 5,
+  });
 
 function clearGallery() {
     refs.galleryList.innerHTML = '';

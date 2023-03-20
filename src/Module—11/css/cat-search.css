@@ -79,7 +79,13 @@ outline: none;
     cursor: pointer;
 }
 
+.search-btn:focus {
+    outline: none;
+}
 
+.search-btn:focus .search-btn ~.lens {
+    fill: #ff0;
+}
 
 .lens {
     fill: #fff

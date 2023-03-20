@@ -7,7 +7,7 @@ export class ServiceApi {
     constructor() {
       this.page = 1;
       this.perPage = 40;
-      this.searchQuery = 'cat';
+      this.searchQuery = '';
       this.axios = require('axios');
     }
   
