@@ -15,6 +15,7 @@ import itemTpl from '../../templates/img-card.hbs'
     let perPage = 10;
     let page = 0;
     let currentQuery = ''
+    let remained = 0
 
     refs.inputField.classList.add('field')
     refs.buttonSubmit.classList.add('search-btn')
@@ -28,10 +29,13 @@ function onSearch(e) {
     e.preventDefault()
     clearGallery()
     page = 1
+    // console.log('page',page);
+
     refs.inputField.focused = false
     const input = e.currentTarget.elements.searchQuery.value.trim()
     currentQuery = input
 
+ 
 
     if(input === '' || input.length === 1){
     return Notiflix.Notify.failure('Please enter valid name.')
@@ -41,6 +45,9 @@ function onSearch(e) {
     .then(({ hits,totalHits }) => {
         console.log('totalHits',totalHits);
 
+        remained =  totalHits - perPage
+        console.log('page',page,'remained',remained);
+
         if (hits.length === 0) {
             Notiflix.Notify.failure(
               'Sorry, there are no images matching your search query. Please try again.'
@@ -48,11 +55,8 @@ function onSearch(e) {
           } else {
 
         const maxPage = totalHits / hits.length;
-        let currentPage = page ;
-        console.log('maxPage',maxPage,'currentPage',currentPage);
-      
-
-        if (maxPage <= currentPage) {
+       
+        if (maxPage <= page) {
           Notiflix.Notify.failure(
             "We're sorry, but you've reached the end of search results."
           );
@@ -77,17 +81,19 @@ function onSearch(e) {
 
 
 function onLoadMoreImg(e) {
+    refs.buttonMore.disabled = true;
     page +=1
-    console.log('page',page);
-console.log('currentQuery',currentQuery);
-
+    // console.log('page',page);
 
 fetchCard(currentQuery, page, perPage)
 .then(({ hits, totalHits }) => {
-  const currentPage = page - 1;
+
+    remained =  totalHits - perPage * page
+    console.log('page',page,'remained',remained);
+
   const maxPage = totalHits / perPage;
 
-  if (maxPage <= currentPage) {
+  if (maxPage <= page) {
     Notiflix.Notify.failure(
       "We're sorry, but you've reached the end of search results."
     );
@@ -102,6 +108,9 @@ fetchCard(currentQuery, page, perPage)
 });
 }
 
+
+
+// console.log('currentQuery',currentQuery);
 
 
 function renderItem(data) {
@@ -130,6 +139,8 @@ function renderItem(data) {
 function createMarkup(data) {
     refs.galleryList.insertAdjacentHTML('beforeend', renderItem(data));
     lightbox.refresh();
+
+
     const { height: cardHeight } = document
       .querySelector('.gallery')
       .firstElementChild.getBoundingClientRect();
