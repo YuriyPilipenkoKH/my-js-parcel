@@ -43,27 +43,6 @@ export class ServiceApi {
     }
   }
 
-const first = new ServiceApi
+export const finder = new ServiceApi()
 
 
-// export default  async function fetchCard(data) {
-//     try {
-//       const response = await axios.get(`
-//       ${BASE_URL}/?key=${API_KEY}&q=${data}&image_type=photo&orientation=horizontal&safesearch=true
-//       `);
-//       console.log(response);
-//     } catch (error) {
-//         console.error(error);
-//         throw Error(response.statusText)
-      
-//     }
-//   }
-
-// console.log(fetchCard('cat'))
-   //    return  axios.get(`${BASE_URL}/?key=${API_KEY}&q=${data}&image_type=photo&orientation=horizontal&safesearch=true`)
-        // .then(response =>  {
-        //     if(!response.ok) {
-        //         throw Error(response.statusText)
-        //     }
-        //     return response.json()
-        // } )
