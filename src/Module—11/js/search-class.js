@@ -35,11 +35,15 @@ class ImageManager {
         this.#refs.form =  document.querySelector('.search-form');
         this.#refs.inputField = document.querySelector('.search-form > input');
         this.#refs.buttonSubmit = document.querySelector('.search-form > button');
+        this.#refs.buttonMore = document.querySelector('.load-more');
+        this.#refs.galleryList = document.querySelector('.gallery');
       }
     
       #initListeners() {
         this.#refs.form.addEventListener('submit', this.#onSearch.bind(this));
         this.#refs.buttonMore.addEventListener('click', this.#onLoadMoreImg.bind(this));
+        this.#refs.inputField.addEventListener('input', this.#onInputChange.bind(this));
+
       }
 
 
@@ -51,6 +55,10 @@ class ImageManager {
         // return this.#fetchArticles().then((articles) => {
         //   this.#updateArticles([...this.#articles, ...articles]);
         // });
+      }
+
+      #onInputChange() {
+        
       }
 
 
