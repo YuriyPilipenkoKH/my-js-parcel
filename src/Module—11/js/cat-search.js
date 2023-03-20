@@ -12,7 +12,8 @@ import itemTpl from '../../templates/img-card.hbs'
     buttonMore: document.querySelector('.load-more'),
     galleryList: document.querySelector('.gallery'),
   };
-    let page = 1;
+    let perPage = 40;
+    let page = 0;
     let currentQuery = ''
 
     refs.inputField.classList.add('field')
@@ -27,7 +28,7 @@ function onSearch(e) {
     e.preventDefault()
     clearGallery()
     refs.inputField.focused = false
-
+    page = 1;
     const input = e.currentTarget.elements.searchQuery.value.trim()
     currentQuery = input
 
@@ -36,8 +37,10 @@ function onSearch(e) {
     return Notiflix.Notify.failure('Please enter valid name.')
     }
    
-    fetchCard(input)
+    fetchCard(input,page,perPage)
     .then(({ hits,totalHits }) => {
+        let totalPages = totalHits / perPage;
+        console.log('totalPages',totalPages);
 
         if (hits.length === 0) {
             Notiflix.Notify.failure(
@@ -94,7 +97,7 @@ function renderItem(data) {
   }
 
 function onLoadMoreImg(e) {
-    page += 1
+ 
     const input = refs.inputField.value.trim();
     
     fetchCard(input)
