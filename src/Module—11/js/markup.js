@@ -8,4 +8,26 @@ export const lens = `
 `;
 
 
+ const headerOfClassSearch = `
+<div class="header">
+<form class="search-form " id="search-form">
+    <input
+    class="field"
+      type="text"
+      name="searchQuery"
+      autocomplete="off"
+      placeholder="Search images..."
+    />
+    <button class="search-btn" type="submit">
+    
+        ${lens}
+    </button>
+  </form>
+</div>
 
+<div class="gallery"></div>
+
+<button type="button" class="load-more is-hidden">Load more</button>
+
+
+`

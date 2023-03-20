@@ -4,12 +4,13 @@ import Notiflix from 'notiflix'
 import { finder } from './fetch-class.js'
 import { lens } from './markup.js'
 import itemTpl from '../../templates/img-card.hbs'
+import './markup'
 // import { addStyle } from './some-styles.js'
 
 console.log(finder);
 
 class ImageManager {
-    #markup = 1;
+    #markup = headerOfClassSearch;
     #targetElement = null;
     #infinityLoading = false;
     #searchQuery = null;
@@ -78,3 +79,7 @@ class ImageManager {
       }
 
 }
+
+
+const first = new ImageManager()
+first.init()
