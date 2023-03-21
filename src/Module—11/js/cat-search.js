@@ -158,8 +158,7 @@ function createMarkup(data) {
   const lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
-    enableKeyboard: true,
-    doubleTapZoom: 5,
+   
   });
 
 function clearGallery() {
