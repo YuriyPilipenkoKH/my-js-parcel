@@ -1,13 +1,16 @@
 import SimpleLightbox from 'simplelightbox'
 import "simplelightbox/dist/simple-lightbox.min.css"
 import Notiflix from 'notiflix'
-import { finder } from './fetch-class.js'
-import { headerOfClassSearch } from './markup.js'
-import itemTpl from '../../templates/img-card.hbs'
+import { finder  } from './fetch-class.js'
+import { headerOfClassSearch, itemTpl } from './markup.js'
+
 // import './markup'
 // import { addStyle } from './some-styles.js'
 
+// console.log(itemTpl);
 
+console.log(finder);
+// console.log(finder.makeFetch)
 class ImageManager {
     #markup = headerOfClassSearch;
     #targetElement = null;
@@ -15,6 +18,8 @@ class ImageManager {
     #searchQuery = null;
     #refs = {};
     #articles = [];
+
+    perPage = finder.perPage
 
     constructor({ targetElement, infinityLoading = false } = {}) {
         this.#targetElement = targetElement || document.body;
@@ -55,26 +60,44 @@ class ImageManager {
         this.#refs.inputField.focused = false
         // this.#refs.buttonSubmit.disabled = true;
         const currentQuery = e.currentTarget.elements.searchQuery.value
+        currentQuery = this.#searchQuery
       
         if(currentQuery === '' || currentQuery.length === 1){
           return Notiflix.Notify.failure('Please enter valid name.')
           }
 
           finder.makeFetch(currentQuery)
-          .then(response => response.json())
-          .catch((error) => console.log(error));
+          .then(({ hits,totalHits }) => {
+            if (totalHits === 0) {
+              Notiflix.Notify.failure(
+                  'Sorry, there are no images matching your search query. Please try again.',
+                );
+            } else {
+              this.render(hits);
+              lightbox.refresh();
+              Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+              this.#refs.buttonSubmit.disabled = true;
+      
+              if (totalHits > this.perPage) {
+                  this.#refs.buttonMore.classList.remove('is-hidden');
+              }
+            }
+          })
+          .catch((error) => console.log(error))
+          .finally(() => {
+            this.#refs.form.reset();
+       });  
       }
 
-      #onLoadMoreImg(e) {}
-
-      #loadMore() {
-        // return this.#fetchArticles().then((articles) => {
-        //   this.#updateArticles([...this.#articles, ...articles]);
-        // });
+      #onLoadMoreImg(e) {
+        finder.incrementPage()
+        finder.makeFetch(this.#searchQuery)
+        
+        
       }
 
       #onInputChange() {
-        
+        this.#refs.buttonSubmit.disabled = false;
       }
 
 
@@ -83,7 +106,7 @@ class ImageManager {
           (entries) => {
             for (const entry of entries) {
               if (entry.isIntersecting && this.#articles.length > 0) {
-                this.#loadMore();
+                this.#onLoadMoreImg();
               }
             }
           },
@@ -93,14 +116,33 @@ class ImageManager {
         observer.observe(this.#refs.moreBtn);
       }
 
-      #render() {
-        const mockup = this.#articles.map((data) => articleTpl({ ...data })).join('');
+
+      render(images) {
+        const mockup = images
+        .map(image => {
+          const { id, largeImageURL, webformatURL, tags, likes, views, comments, downloads } = image;
+          return `
+            <a class="gallery__link" href="${largeImageURL}">
+              <div class="gallery-item" id="${id}">
+                <img class="gallery-item__img" src="${webformatURL}" alt="${tags}" loading="lazy" />
+                <div class="info">
+                  <p class="info-item"><b>Likes</b>${likes}</p>
+                  <p class="info-item"><b>Views</b>${views}</p>
+                  <p class="info-item"><b>Comments</b>${comments}</p>
+                  <p class="info-item"><b>Downloads</b>${downloads}</p>
+                </div>
+              </div>
+            </a>
+          `;
+        })
+        .join('');
+       
     
-        this.#refs.articles.innerHTML = mockup;
+        this.#refs.galleryList.innerHTML = mockup;
       }
 
       clearGallery() {
-
+        this.#refs.galleryList.innerHTML = ''
       }
 }
 
@@ -108,7 +150,7 @@ class ImageManager {
 const first = new ImageManager()
 first.init()
 
-console.log(finder);
+
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
