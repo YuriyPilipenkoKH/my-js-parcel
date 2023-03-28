@@ -4,6 +4,8 @@ import Notiflix from 'notiflix'
 import { finder  } from './fetch-class.js'
 import { headerOfClassSearch, itemTpl } from './markup.js'
 
+// import {topFunction, scrollFunction} from './backToTop.js'
+
 // import './markup'
 // import { addStyle } from './some-styles.js'
 class ImageManager {
@@ -94,11 +96,9 @@ class ImageManager {
 
           const totalPages = Math.ceil(totalHits / this.perPage);
           if (this.page >= totalPages) {
-            this.#refs.buttonMore.classList.add('is-hidden');
-            Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.")
+            this.hideMoreBtn()
           }
         })
-        .catch(error => console.log(error));
         // console.log('finder.page',finder.page,'this.page',this.page);
 
 
@@ -107,6 +107,17 @@ class ImageManager {
 
       #onInputChange() {
         this.#refs.buttonSubmit.disabled = false;
+      }
+
+      infiniteScroll() {
+        window.addEventListener('scroll', () => {
+          const documentRect = document.documentElement.getBoundingClientRect()
+          console.log('bottom',documentRect.bottom);
+
+          if(documentRect.bottom < document.documentElement.clientHeight +200) {
+            this.#onLoadMoreImg()
+          }
+        })
       }
 
 
@@ -153,11 +164,17 @@ class ImageManager {
       clearGallery() {
         this.#refs.galleryList.innerHTML = ''
       }
+
+      hideMoreBtn() {
+        this.#refs.buttonMore.classList.remove('is-hidden')
+      }
 }
 
 
 const first = new ImageManager()
 first.init()
+// first.infiniteScroll()
+// first.hideMoreBtn()
 
 
 
