@@ -22,8 +22,8 @@ export class ServiceApi {
             per_page: this.perPage,
         });
         const  url = await axios.get(`${BASE_URL}/?${params}`) 
-        // this.incrementPage();
-         console.log(url);
+        this.incrementPage();
+        //  console.log(url);
 
          return url.data
     }; 

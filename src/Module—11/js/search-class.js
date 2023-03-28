@@ -1,11 +1,13 @@
 import SimpleLightbox from 'simplelightbox'
 import "simplelightbox/dist/simple-lightbox.min.css"
+import throttle from 'lodash.throttle'
 import Notiflix from 'notiflix'
 import { finder  } from './fetch-class.js'
 import { headerOfClassSearch, itemTpl } from './markup.js'
 
 // import {topFunction, scrollFunction} from './backToTop.js'
 
+// console.log(finder.resetPage);
 // import './markup'
 // import { addStyle } from './some-styles.js'
 class ImageManager {
@@ -15,8 +17,9 @@ class ImageManager {
     #refs = {};
     #articles = [];
 
+    total = 0
     query = null;
-    page = finder.page
+    page = 1
     perPage = finder.perPage
 
     constructor({ targetElement, infinityLoading = false } = {}) {
@@ -53,6 +56,9 @@ class ImageManager {
       onSearch(e) {
         e.preventDefault();
         this.clearGallery()
+        finder.resetPage()
+        console.log(finder.resetPage);
+        console.log('page',finder.page);
        
         
         this.#refs.inputField.focused = false
@@ -65,10 +71,14 @@ class ImageManager {
 
           finder.makeFetch(this.query)
           .then(({ hits,totalHits }) => {
+            // finder.incrementPage()
             if (totalHits === 0) {
               Notiflix.Notify.failure(
                   'Sorry, there are no images matching your search query. Please try again.',
                 );
+
+                totalHits = this.total
+
             } else {
               this.render(hits);
               lightbox.refresh();
@@ -80,7 +90,7 @@ class ImageManager {
               }
             }
           })
-          .catch((error) => console.log(error))
+          .catch((error) => Notiflix.Notify.failure('Please enter valid name.'))
           .finally(() => {
             this.#refs.form.reset();
        });  
@@ -88,8 +98,8 @@ class ImageManager {
 
       #onLoadMoreImg(e) {
         finder.incrementPage()
-        this.page = finder.page
-        finder.makeFetch(this.query,this.page)
+        this.page += 1
+        finder.makeFetch(this.query,finder.page)
         .then(({ hits,totalHits }) => {
           this.render(hits);
           lightbox.refresh();
@@ -109,15 +119,48 @@ class ImageManager {
         this.#refs.buttonSubmit.disabled = false;
       }
 
-      infiniteScroll() {
-        window.addEventListener('scroll', () => {
+      // window.addEventListener('scroll', throttle(this.infiniteScroll, 3000))
+
+        infiniteScroll() {
+        window.addEventListener('scroll', throttle(function scroll ()  {
           const documentRect = document.documentElement.getBoundingClientRect()
-          console.log('bottom',documentRect.bottom);
+          // console.log('bottom',documentRect.bottom);
 
           if(documentRect.bottom < document.documentElement.clientHeight +200) {
-            this.#onLoadMoreImg()
+            this.page += 1
+
+            finder.makeFetch(this.query,this.page)
+            .then(({ hits,totalHits,total }) => {
+
+              console.log(hits);
+              console.log(totalHits);
+              console.log(total);
+              console.log(this.total);
+
+              let totalPages = Math.ceil(totalHits / this.perPage);
+              if (this.page >= totalPages) {
+                
+                // this.page = finder.page
+                console.log('FFF');
+                Notiflix.Report.info(
+                  'Gallery ',
+                  'Sorry'
+
+                );
+                this.hideMoreBtn()
+              finder.resetPage()
+              }
+              this.render(hits);
+              lightbox.refresh();
+              // 
+
+     
+            })
+
+
           }
-        })
+        } ,3000)
+        )
       }
 
 
@@ -166,15 +209,15 @@ class ImageManager {
       }
 
       hideMoreBtn() {
-        this.#refs.buttonMore.classList.remove('is-hidden')
+        this.#refs.buttonMore.classList.add('is-hidden')
       }
 }
 
 
 const first = new ImageManager()
 first.init()
-// first.infiniteScroll()
-// first.hideMoreBtn()
+first.infiniteScroll()
+first.hideMoreBtn()
 
 
 
