@@ -88,6 +88,17 @@ class ImageManager {
         finder.incrementPage()
         this.page = finder.page
         finder.makeFetch(this.query,this.page)
+        .then(({ hits,totalHits }) => {
+          this.render(hits);
+          lightbox.refresh();
+
+          const totalPages = Math.ceil(totalHits / this.perPage);
+          if (this.page >= totalPages) {
+            this.#refs.buttonMore.classList.add('is-hidden');
+            Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.")
+          }
+        })
+        .catch(error => console.log(error));
         // console.log('finder.page',finder.page,'this.page',this.page);
 
 
