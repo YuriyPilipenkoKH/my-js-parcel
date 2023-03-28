@@ -11,18 +11,18 @@ export class ServiceApi {
       this.axios = require('axios');
     }
   
-   async  makeFetch(searchQuery) {
+   async  makeFetch(query,page) {
         const params = new URLSearchParams({
             key: API_KEY,  
-            q: searchQuery,
+            q: query,
             image_type: 'photo',
             orientation: 'horizontal',
             safesearch: true,
-            page: this.pageAmount,
+            page: page,
             per_page: this.perPage,
         });
         const  url = await axios.get(`${BASE_URL}/?${params}`) 
-        this.incrementPage();
+        // this.incrementPage();
          console.log(url);
 
          return url.data

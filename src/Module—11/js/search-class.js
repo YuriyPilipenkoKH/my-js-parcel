@@ -15,10 +15,11 @@ class ImageManager {
     #markup = headerOfClassSearch;
     #targetElement = null;
     #infinityLoading = false;
-    #searchQuery = null;
     #refs = {};
     #articles = [];
 
+    query = null;
+    page = finder.page
     perPage = finder.perPage
 
     constructor({ targetElement, infinityLoading = false } = {}) {
@@ -55,18 +56,17 @@ class ImageManager {
       onSearch(e) {
         e.preventDefault();
         this.clearGallery()
-        let page = 1
+       
         
         this.#refs.inputField.focused = false
         // this.#refs.buttonSubmit.disabled = true;
-        const currentQuery = e.currentTarget.elements.searchQuery.value
-        currentQuery = this.#searchQuery
+        this.query = this.#refs.inputField.value
       
-        if(currentQuery === '' || currentQuery.length === 1){
+        if(this.query === '' || this.query.length === 1){
           return Notiflix.Notify.failure('Please enter valid name.')
           }
 
-          finder.makeFetch(currentQuery)
+          finder.makeFetch(this.query)
           .then(({ hits,totalHits }) => {
             if (totalHits === 0) {
               Notiflix.Notify.failure(
@@ -91,8 +91,11 @@ class ImageManager {
 
       #onLoadMoreImg(e) {
         finder.incrementPage()
-        finder.makeFetch(this.#searchQuery)
-        
+        this.page = finder.page
+        finder.makeFetch(this.query,this.page)
+        // console.log('finder.page',finder.page,'this.page',this.page);
+
+
         
       }
 
@@ -138,7 +141,7 @@ class ImageManager {
         .join('');
        
     
-        this.#refs.galleryList.innerHTML = mockup;
+        this.#refs.galleryList.insertAdjacentHTML('beforeend', mockup) 
       }
 
       clearGallery() {
