@@ -6,11 +6,6 @@ import { headerOfClassSearch, itemTpl } from './markup.js'
 
 // import './markup'
 // import { addStyle } from './some-styles.js'
-
-// console.log(itemTpl);
-
-console.log(finder);
-// console.log(finder.makeFetch)
 class ImageManager {
     #markup = headerOfClassSearch;
     #targetElement = null;
