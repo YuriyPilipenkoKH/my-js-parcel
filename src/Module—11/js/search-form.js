@@ -4,7 +4,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 // import { ServiceApi } from './news-api';
 import Notiflix from 'notiflix';
 
-import fetchCard from './fetch-class';
+// import fetchCard from './fetch-class';
 
 const { height: cardHeight } = document
   .querySelector(".gallery")
