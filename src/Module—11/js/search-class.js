@@ -2,6 +2,7 @@ import SimpleLightbox from 'simplelightbox'
 import "simplelightbox/dist/simple-lightbox.min.css"
 import throttle from 'lodash.throttle'
 import Notiflix from 'notiflix'
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { finder  } from './fetch-class.js'
 import { headerOfClassSearch, itemTpl } from './markup.js'
 
@@ -80,7 +81,7 @@ class ImageManager {
                 totalHits = this.total
 
             } else {
-              this.render(hits);
+              this.render(hits,finder.page);
               lightbox.refresh();
               Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
               this.#refs.buttonSubmit.disabled = true;
@@ -97,11 +98,11 @@ class ImageManager {
       }
 
       #onLoadMoreImg(e) {
-        finder.incrementPage()
+        // finder.incrementPage()
         this.page += 1
         finder.makeFetch(this.query,finder.page)
         .then(({ hits,totalHits }) => {
-          this.render(hits);
+          this.render(hits,finder.page);
           lightbox.refresh();
 
           const totalPages = Math.ceil(totalHits / this.perPage);
@@ -150,7 +151,7 @@ class ImageManager {
                 this.hideMoreBtn()
               finder.resetPage()
               }
-              this.render(hits);
+              this.render(hits,page);
               lightbox.refresh();
               // 
 
@@ -180,16 +181,16 @@ class ImageManager {
       }
 
 
-      render(images) {
+      render(images, page) {
         const mockup = images
-        .map(image => {
+        .map((image,idx) => {
           const { id, largeImageURL, webformatURL, tags, likes, views, comments, downloads } = image;
           return `
             <a class="gallery__link" href="${largeImageURL}">
               <div class="gallery-item" id="${id}">
                 <img class="gallery-item__img" src="${webformatURL}" alt="${tags}" loading="lazy" />
                 <div class="info">
-                  <p class="info-item"><b>Likes</b>${likes}</p>
+                  <p class="info-item"><b>id</b>${(idx+1)+ (this.perPage * (page-2))}</p>
                   <p class="info-item"><b>Views</b>${views}</p>
                   <p class="info-item"><b>Comments</b>${comments}</p>
                   <p class="info-item"><b>Downloads</b>${downloads}</p>
@@ -216,8 +217,8 @@ class ImageManager {
 
 const first = new ImageManager()
 first.init()
-first.infiniteScroll()
-first.hideMoreBtn()
+// first.infiniteScroll()
+// first.hideMoreBtn()
 
 
 
