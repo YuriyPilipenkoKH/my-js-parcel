@@ -58,7 +58,7 @@ class ImageManager {
         e.preventDefault();
         this.clearGallery()
         finder.resetPage()
-        console.log(finder.resetPage);
+        // console.log(finder.resetPage);
         console.log('page',finder.page);
        
         
