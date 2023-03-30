@@ -12,12 +12,13 @@ import { headerOfClassSearch, itemTpl } from '../markup'
 // import './markup'
 // import { addStyle } from './some-styles.js'
 class ImageManager {
-    #markup = headerOfClassSearch;
+    
     #targetElement = null;
     #infinityLoading = false;
     #refs = {};
     #articles = [];
-
+ 
+    markup = headerOfClassSearch;
     total = 0
     query = null;
     page = 1
@@ -29,7 +30,7 @@ class ImageManager {
       }
 
       init() {
-        this.#targetElement.innerHTML = this.#markup;
+        this.#targetElement.innerHTML = this.markup;
         this.#initRefs();
         this.#initListeners();
 
@@ -39,19 +40,39 @@ class ImageManager {
       }
 
       #initRefs() {
-        this.#refs.form =  document.querySelector('.search-form');
-        this.#refs.inputField = document.querySelector('.search-form > input');
-        this.#refs.buttonSubmit = document.querySelector('.search-form > button');
-        this.#refs.buttonMore = document.querySelector('.load-more');
-        this.#refs.galleryList = document.querySelector('.gallery');
+        this.#refs.form =  document.querySelector('.search-form')
+        this.#refs.inputField = document.querySelector('.search-form > input')
+        this.#refs.buttonSubmit = document.querySelector('.search-form > button')
+        this.#refs.buttonMore = document.querySelector('.load-more')
+        this.#refs.galleryList = document.querySelector('.gallery')
       }
     
       #initListeners() {
-        this.#refs.form.addEventListener('submit', this.onSearch.bind(this));
-        this.#refs.buttonMore.addEventListener('click', this.#onLoadMoreImg.bind(this));
-        this.#refs.inputField.addEventListener('input', this.#onInputChange.bind(this));
+        this.#refs.form.addEventListener('submit', this.onSearch.bind(this))
+        this.#refs.buttonMore.addEventListener('click', this.#onLoadMoreImg.bind(this))
+        this.#refs.inputField.addEventListener('input', this.#onInputChange.bind(this))
 
       }
+
+      set query(text) {
+          this.query = text
+      } 
+
+      get query() {
+        return this.query;
+      }
+
+      set page(num) {
+          this.page = num
+      } 
+
+      get page() {
+        return  this.page
+      } 
+      
+      get perPage() {
+        return  this.prePage
+      } 
       
 
       onSearch(e) {
@@ -219,6 +240,8 @@ const first = new ImageManager()
 first.init()
 // first.infiniteScroll()
 // first.hideMoreBtn()
+console.log(first.page);
+console.log(first.perPage);
 
 
 
