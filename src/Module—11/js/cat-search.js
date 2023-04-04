@@ -5,6 +5,7 @@ import {fetchCard} from './fetchCard.js'
 import { lens } from './markup.js'
 import itemTpl from '../../templates/img-card.hbs'
 import { addStyle } from './some-styles.js'
+import './toIndex'
 
  export const refs = {
     form: document.querySelector('.search-form'),

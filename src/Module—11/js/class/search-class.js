@@ -5,6 +5,7 @@ import Notiflix from 'notiflix'
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { finder  } from './fetch-class'
 import { headerOfClassSearch, itemTpl } from '../markup'
+import '../toIndex'
 
 // import {topFunction, scrollFunction} from './backToTop.js'
 
